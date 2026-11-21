@@ -87,7 +87,23 @@
   .calendar-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
   .calendar-day { min-width: 0; overflow: hidden; }
   .week-grid { overflow-x: auto; }
-  .modal, .modal-card, .modalbox { width: calc(100vw - 20px) !important; max-width: calc(100vw - 20px) !important; max-height: calc(100dvh - 24px) !important; overflow-y: auto; }
+  /* El contenedor modal debe cubrir toda la pantalla; el formulario queda centrado dentro. */
+  .modal {
+    position: fixed; inset: 0; z-index: 200;
+    width: 100vw !important; height: 100dvh; max-width: none !important; max-height: none !important;
+    padding: 12px; overflow: hidden; align-items: center; justify-content: center;
+  }
+  .modal .dialog {
+    width: 100%; max-width: 610px; max-height: calc(100dvh - 24px);
+    margin: auto; padding: 17px 15px; border-radius: 14px; overflow-x: hidden; overflow-y: auto;
+  }
+  .modal .formgrid { grid-template-columns: minmax(0, 1fr) !important; gap: 12px; }
+  .modal .field, .modal .field.full { width: 100%; min-width: 0; grid-column: 1 / -1; }
+  .modal .field input, .modal .field select, .modal .field textarea {
+    display: block; width: 100%; max-width: 100%; min-width: 0;
+  }
+  .modal .dialogactions { position: sticky; bottom: -17px; background: white; padding: 12px 0 2px; flex-wrap: wrap; }
+  .modal .dialogactions .btn { flex: 1 1 110px; }
   .modal-backdrop { padding: 10px !important; align-items: center; }
   .actions { gap: 4px; }
   .actions button, .btn { max-width: 100%; }
