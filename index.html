@@ -30,6 +30,75 @@
 .demo-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.demo-step{border:1px solid var(--line);border-radius:10px;padding:11px;min-width:0}.demo-step.done{background:#f1faf7;border-color:#ccebe3}.demo-step .stepnum{font-size:10px;color:var(--teal);font-weight:800}.demo-step b{display:block;font-size:11px;margin:6px 0;color:var(--navy)}.demo-step small{display:block;font-size:10px;color:var(--muted);min-height:29px}.demo-step button{margin-top:9px;width:100%;font-size:10px;padding:7px 6px}@media(max-width:850px){.demo-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}\n@media(max-width:650px){.calendar-grid{gap:3px}.calendar-day{min-height:75px;padding:4px}.calendar-event{font-size:8px;padding:3px}.calendar-day .calendar-event:nth-of-type(n+3){display:none}.week-grid .calendar-day{min-height:120px}.calendar-number{font-size:10px}.calendar-toolbar{align-items:flex-start}}
 \n@media(max-width:950px){.side{width:68px;padding:18px 8px}.brand{padding:0 5px 25px}.brand>div:last-child,.navlabel,.nav button .navtext,.sidefoot{display:none}.nav button{justify-content:center;padding:12px 5px}.nav .ico{width:auto}.stats{grid-template-columns:repeat(2,1fr)}.profilegrid{grid-template-columns:1fr}.profilecard{display:grid;grid-template-columns:60px 1fr;column-gap:12px}.bigavatar{grid-row:span 2}.profilecard .detail{grid-column:1/-1}}
 @media(max-width:650px){.top{padding:0 14px}.content{padding:20px 13px 35px}.heading{display:block}.heading .btn{margin-top:12px}.heading h1{font-size:22px}.grid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.user span{display:none}}
+
+/* Responsive layout refinements: tablet and mobile */
+@media (max-width: 950px) {
+  .content { padding-left: 20px; padding-right: 20px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .profilegrid { grid-template-columns: minmax(0, 1fr); }
+  .tablewrap { max-width: 100%; }
+}
+@media (max-width: 650px) {
+  html, body { width: 100%; overflow-x: hidden; }
+  .layout { display: block; min-height: 100vh; }
+  .side {
+    position: fixed; z-index: 100; left: 0; right: 0; bottom: 0; top: auto;
+    width: 100%; height: auto; min-height: 64px; padding: 6px 5px calc(6px + env(safe-area-inset-bottom));
+    display: block; border-radius: 14px 14px 0 0; box-shadow: 0 -5px 22px #17364a20;
+  }
+  .brand, .navlabel, .sidefoot { display: none !important; }
+  .nav { display: flex; align-items: stretch; justify-content: space-around; gap: 2px; }
+  .nav button {
+    flex: 1 1 0; min-width: 0; margin: 0; padding: 7px 2px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px;
+    border-radius: 8px; font-size: 9px; line-height: 1.1; text-align: center;
+  }
+  .nav button .navtext { display: block !important; white-space: normal; }
+  .nav .ico { width: auto; font-size: 17px; line-height: 1; }
+  .main { width: 100%; min-width: 0; padding-bottom: calc(78px + env(safe-area-inset-bottom)); }
+  .top { height: 56px; padding: 0 13px; }
+  .crumb { font-size: 10px; }
+  .content { width: 100%; padding: 15px 11px 24px; }
+  .heading { display: flex; flex-direction: column; gap: 9px; margin-bottom: 15px; }
+  .heading h1 { font-size: 21px; line-height: 1.2; }
+  .heading .btn { margin-top: 0; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .stat { min-width: 0; padding: 11px; }
+  .stat strong { font-size: clamp(17px, 5vw, 21px); overflow-wrap: anywhere; }
+  .stat label, .stat small { font-size: 9px; }
+  .panel { padding: 13px; margin-bottom: 11px; border-radius: 11px; }
+  .panelhead { align-items: flex-start; flex-wrap: wrap; }
+  .panelhead .btn { max-width: 100%; }
+  .grid, .quickgrid, .profilegrid { grid-template-columns: minmax(0, 1fr); }
+  .quickgrid { gap: 7px; }
+  .quick { padding: 10px; }
+  .toolbar { align-items: stretch; }
+  .toolbar input, .toolbar select { min-width: 0; width: 100%; flex: 1 1 100%; }
+  .formgrid { grid-template-columns: minmax(0, 1fr) !important; }
+  .field, .field.full { min-width: 0; grid-column: 1 / -1; }
+  .field input, .field select, .field textarea { width: 100%; min-width: 0; }
+  .tablewrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { min-width: 600px; }
+  .profilecard { display: block; }
+  .profilecard .detail { display: block; }
+  .demo-steps { grid-template-columns: minmax(0, 1fr); }
+  .calendar-toolbar { display: flex; flex-wrap: wrap; gap: 6px; }
+  .calendar-toolbar button, .calendar-toolbar select { flex: 1 1 auto; }
+  .calendar-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .calendar-day { min-width: 0; overflow: hidden; }
+  .week-grid { overflow-x: auto; }
+  .modal, .modal-card, .modalbox { width: calc(100vw - 20px) !important; max-width: calc(100vw - 20px) !important; max-height: calc(100dvh - 24px) !important; overflow-y: auto; }
+  .modal-backdrop { padding: 10px !important; align-items: center; }
+  .actions { gap: 4px; }
+  .actions button, .btn { max-width: 100%; }
+}
+@media (max-width: 380px) {
+  .content { padding-left: 8px; padding-right: 8px; }
+  .stat { padding: 9px; }
+  .stat strong { font-size: 17px; }
+  .nav button { font-size: 8px; }
+}
+
 </style></head>
 <body>
 <div class="layout">
