@@ -99,6 +99,41 @@
   .nav button { font-size: 8px; }
 }
 
+
+/* Calendario móvil: vista mensual limpia y eventos como indicadores */
+@media (max-width: 650px) {
+  #agenda .panel:has(#calendarGrid) { padding: 11px 8px; }
+  .calendar-toolbar { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 9px; }
+  .calendar-controls { grid-column: 1; grid-row: 1; }
+  .calendar-title { grid-column: 1 / -1; grid-row: 2; min-width: 0; text-align: left; font-size: 14px; }
+  .view-switch { grid-column: 2; grid-row: 1; }
+  .calendar-controls .btn { padding: 8px 11px; }
+  .calendar-dow { padding: 7px 0; font-size: 9px; }
+  .calendar-grid { gap: 4px; }
+  .calendar-day {
+    min-height: 58px; height: 58px; padding: 5px 2px;
+    border-radius: 7px; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+  }
+  .calendar-number { width: 100%; justify-content: center; margin: 0 0 5px; font-size: 11px; }
+  .calendar-number span { display: none; }
+  .calendar-event {
+    display: inline-block; flex: 0 0 6px; width: 6px; height: 6px;
+    min-width: 6px; padding: 0; margin: 1px 2px; border-radius: 50%;
+    font-size: 0; line-height: 0; vertical-align: middle;
+  }
+  .calendar-day .calendar-event:nth-of-type(n+4) { display: none; }
+  .calendar-more { display: none; }
+  .calendar-day.today { background: #eaf7f4; }
+  .calendar-day.selected { border: 2px solid var(--teal); background: #e4f5f1; }
+  .week-grid { overflow-x: auto; grid-template-columns: repeat(7, minmax(68px, 1fr)); }
+  .week-grid .calendar-dow { min-width: 68px; }
+  .week-grid .calendar-day { min-height: 105px; height: 105px; min-width: 68px; }
+  .week-grid .calendar-event { font-size: 9px; line-height: 1.2; width: auto; height: auto; padding: 4px; margin-top: 3px; flex: initial; border-radius: 4px; }
+  .week-grid .calendar-day .calendar-event:nth-of-type(n+4) { display: none; }
+  .calendar-hint { line-height: 1.45; }
+}
+
 </style></head>
 <body>
 <div class="layout">
